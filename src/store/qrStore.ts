@@ -3,7 +3,7 @@
  */
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { mmkvStorage } from './storage';
+import { sqliteStorage } from './storage';
 import { QRCode, QRFormData, DEFAULT_CUSTOMIZATION, QRCategory } from '@/types/qr';
 import { generateUPIUri } from '@/utils/upi';
 
@@ -202,7 +202,7 @@ export const useQRStore = create<QRState>()(
     }),
     {
       name: 'qr-store',
-      storage: createJSONStorage(() => mmkvStorage),
+      storage: createJSONStorage(() => sqliteStorage),
       partialize: (state) => ({
         qrCodes: state.qrCodes,
       }),

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Switch, Image, KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { useTheme, ThemeMode, Spacing, Typography, BorderRadius } from '@/theme';
 import { Colors } from '@/theme/colors';
 import { useSettingsStore } from '@/store/settingsStore';
@@ -123,6 +123,26 @@ export default function SettingsScreen() {
     }
   };
 
+  const handleAvatarPress = () => {
+    if (user.photoUri) {
+      Alert.alert(
+        'Profile Picture',
+        'What would you like to do?',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Remove Photo', style: 'destructive', onPress: () => {
+              setUser({ photoUri: undefined });
+              if (hapticEnabled) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            }
+          },
+          { text: 'Change Photo', onPress: handlePickImage }
+        ]
+      );
+    } else {
+      handlePickImage();
+    }
+  };
+
   const showPrivacyPolicy = () => {
     Alert.alert(
       "Privacy Policy",
@@ -169,7 +189,7 @@ export default function SettingsScreen() {
                 {!isEditingProfile ? (
                   <>
                     <PressableScale
-                      onPress={handlePickImage}
+                      onPress={handleAvatarPress}
                       style={[
                         styles.profileAvatar,
                         { backgroundColor: isDark ? 'rgba(99,102,241,0.15)' : colors.primaryLight },
@@ -182,7 +202,7 @@ export default function SettingsScreen() {
                           resizeMode="cover"
                         />
                       ) : (
-                        <Ionicons name="person" size={28} color={colors.accentTeal} />
+                        <FontAwesome5 name="user" solid={false} size={28} color={colors.accentTeal} />
                       )}
                       <View style={styles.cameraIconBadge}>
                         <Ionicons name="camera" size={12} color="#FFF" />

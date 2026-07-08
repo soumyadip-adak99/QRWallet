@@ -2,21 +2,28 @@
  * Root Layout - App entry with providers
  */
 import React, { useEffect } from 'react';
-import { Stack } from 'expo-router';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider, useTheme } from '@/theme';
 import { View, StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
+import { useSettingsStore } from '@/store/settingsStore';
 
 SplashScreen.preventAutoHideAsync();
 
 function RootLayoutNav() {
   const { colors, isDark } = useTheme();
+  const { isOnboarded } = useSettingsStore();
+  const segments = useSegments();
+  const router = useRouter();
 
   useEffect(() => {
+    if (!isOnboarded && segments[0] !== 'onboarding') {
+      router.replace('/onboarding');
+    }
     SplashScreen.hideAsync();
-  }, []);
+  }, [isOnboarded, segments]);
 
   return (
     <View style={[styles.root, { backgroundColor: colors.background }]}>

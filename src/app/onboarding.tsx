@@ -10,7 +10,7 @@ import {
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Animated, { FadeInDown, FadeInUp, ZoomIn } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
 import * as Haptics from 'expo-haptics';
@@ -51,31 +51,27 @@ export default function OnboardingScreen() {
     }
   };
 
-  const finishOnboarding = async (skip: boolean) => {
+  const finishOnboarding = async () => {
     Keyboard.dismiss();
     setIsSaving(true);
     
     // Simulate a tiny delay for premium loading feel
     await new Promise(resolve => setTimeout(resolve, 600));
 
-    if (skip) {
-      setUser({ name: 'Guest', photoUri: undefined });
-    } else {
-      const trimmed = name.trim();
-      if (trimmed.length < 2) {
-        setError('Name must be at least 2 characters.');
-        if (hapticEnabled) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-        setIsSaving(false);
-        return;
-      }
-      if (trimmed.length > 40) {
-        setError('Name must be under 40 characters.');
-        if (hapticEnabled) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-        setIsSaving(false);
-        return;
-      }
-      setUser({ name: trimmed, photoUri });
+    const trimmed = name.trim();
+    if (trimmed.length < 2) {
+      setError('Name must be at least 2 characters.');
+      if (hapticEnabled) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      setIsSaving(false);
+      return;
     }
+    if (trimmed.length > 40) {
+      setError('Name must be under 40 characters.');
+      if (hapticEnabled) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      setIsSaving(false);
+      return;
+    }
+    setUser({ name: trimmed, photoUri });
     
     setOnboarded(true);
     router.replace('/(tabs)');
@@ -83,12 +79,9 @@ export default function OnboardingScreen() {
 
   return (
     <SafeAreaView style={[styles.safe, { backgroundColor: colors.background }]}>
-      {/* Top Bar with Skip */}
+      {/* Top Bar removed skip button */}
       <Animated.View entering={FadeInDown.delay(100).duration(400)} style={styles.header}>
         <View style={styles.flex} />
-        <PressableScale onPress={() => finishOnboarding(true)} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-          <Text style={[styles.skipText, { color: colors.textSecondary }]}>Skip</Text>
-        </PressableScale>
       </Animated.View>
 
       <KeyboardAwareScrollView
@@ -113,10 +106,7 @@ export default function OnboardingScreen() {
             {photoUri ? (
               <Image source={{ uri: photoUri }} style={styles.avatarImage} />
             ) : (
-              <View style={styles.avatarPlaceholder}>
-                <Ionicons name="camera" size={32} color={colors.textTertiary} />
-                <Text style={[styles.avatarText, { color: colors.textTertiary }]}>Add Photo</Text>
-              </View>
+              <FontAwesome5 name="user" solid={false} size={60} color={colors.textTertiary} />
             )}
             
             {/* Plus badge */}
@@ -146,7 +136,7 @@ export default function OnboardingScreen() {
             autoCapitalize="words"
             autoCorrect={false}
             leftIcon={<Ionicons name="person-outline" size={20} color={colors.textTertiary} />}
-            onSubmitEditing={() => finishOnboarding(false)}
+            onSubmitEditing={() => finishOnboarding()}
             returnKeyType="done"
           />
         </Animated.View>
@@ -155,7 +145,7 @@ export default function OnboardingScreen() {
       <Animated.View entering={FadeInUp.delay(500).duration(400)} style={[styles.footer, { backgroundColor: colors.background }]}>
         <Button
           label={isSaving ? "Saving..." : "Continue"}
-          onPress={() => finishOnboarding(false)}
+          onPress={() => finishOnboarding()}
           variant="primary"
           loading={isSaving}
           disabled={name.trim().length < 2}

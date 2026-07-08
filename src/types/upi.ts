@@ -21,7 +21,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#4285F4',
     gradientColors: ['#4285F4', '#34A853'],
     icon: 'logo-google',
-    imageSource: require('@/assets/images/googlepay.png'),
+    imageSource: require('@/assets/images/googlepay.webp'),
     upiHandle: '@okicici',
   },
   {
@@ -31,7 +31,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#5F259F',
     gradientColors: ['#5F259F', '#8B5CF6'],
     icon: 'phone-portrait',
-    imageSource: require('@/assets/images/phone-pe.png'),
+    imageSource: require('@/assets/images/phone-pe.webp'),
     upiHandle: '@ybl',
   },
   {
@@ -41,7 +41,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#00BAF2',
     gradientColors: ['#00BAF2', '#003087'],
     icon: 'wallet',
-    imageSource: require('@/assets/images/paytm.png'),
+    imageSource: require('@/assets/images/paytm.webp'),
     upiHandle: '@paytm',
   },
   {
@@ -51,7 +51,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#FF9900',
     gradientColors: ['#FF9900', '#FF6600'],
     icon: 'cart',
-    imageSource: require('@/assets/images/amazon-pay.png'),
+    imageSource: require('@/assets/images/amazon-pay.webp'),
     upiHandle: '@apl',
   },
   {
@@ -61,7 +61,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#6C5CE7',
     gradientColors: ['#6C5CE7', '#A29BFE'],
     icon: 'flash',
-     imageSource: require('@/assets/images/supermoney.png'),
+     imageSource: require('@/assets/images/supermoney.webp'),
     upiHandle: '@super',
   },
   {
@@ -71,7 +71,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#00BCD4',
     gradientColors: ['#00BCD4', '#0097A7'],
     icon: 'shield-checkmark',
-    imageSource: require('@/assets/images/bhim.png'),
+    imageSource: require('@/assets/images/bhim.webp'),
     upiHandle: '@upi',
   },
   {
@@ -81,7 +81,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#1A1A2E',
     gradientColors: ['#1A1A2E', '#4A4A6A'],
     icon: 'diamond',
-    imageSource: require('@/assets/images/cred.png'),
+    imageSource: require('@/assets/images/cred.webp'),
     upiHandle: '@cred',
   },
   {
@@ -100,7 +100,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#97144D',
     gradientColors: ['#97144D', '#C4185A'],
     icon: 'business',
-    imageSource: require('@/assets/images/axis.png'),
+    imageSource: require('@/assets/images/axis.webp'),
     upiHandle: '@axisbank',
   },
   {
@@ -110,7 +110,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#F58220',
     gradientColors: ['#F58220', '#B0631B'],
     icon: 'business',
-    imageSource: require('@/assets/images/icici.png'),
+    imageSource: require('@/assets/images/icici.webp'),
     upiHandle: '@icici',
   },
   {
@@ -120,7 +120,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#004C8F',
     gradientColors: ['#004C8F', '#002D5C'],
     icon: 'business',
-    imageSource: require('@/assets/images/hdfc.png'),
+    imageSource: require('@/assets/images/hdfc.webp'),
     upiHandle: '@hdfcbank',
   },
   {
@@ -130,7 +130,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#1A73E8',
     gradientColors: ['#1A73E8', '#0D47A1'],
     icon: 'business',
-    imageSource: require('@/assets/images/sbi.png'),
+    imageSource: require('@/assets/images/sbi.webp'),
     upiHandle: '@sbi',
   },
   {
@@ -140,7 +140,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#ED1C24',
     gradientColors: ['#ED1C24', '#B71C1C'],
     icon: 'business',
-    imageSource: require('@/assets/images/kotak.png'),
+    imageSource: require('@/assets/images/kotak.webp'),
     upiHandle: '@kotak',
   },
   {
@@ -150,7 +150,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
     color: '#9C1D26',
     gradientColors: ['#9C1D26', '#6D141A'],
     icon: 'business',
-    imageSource: require('@/assets/images/idfc.png'),
+    imageSource: require('@/assets/images/idfc.webp'),
     upiHandle: '@idfcbank',
   },
   {

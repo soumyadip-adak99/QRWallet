@@ -3,7 +3,7 @@
  */
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { mmkvStorage } from './storage';
+import { sqliteStorage } from './storage';
 import { ThemeMode } from '@/theme';
 
 interface UserProfile {
@@ -47,7 +47,7 @@ export const useSettingsStore = create<SettingsState>()(
     }),
     {
       name: 'settings-store',
-      storage: createJSONStorage(() => mmkvStorage),
+      storage: createJSONStorage(() => sqliteStorage),
     }
   )
 );

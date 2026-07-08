@@ -13,7 +13,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import Animated, { FadeInDown, FadeInRight, FadeIn } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTheme, Spacing, Typography, BorderRadius } from '@/theme';
 import { Colors, Gradients } from '@/theme/colors';
@@ -96,7 +96,7 @@ export default function HomeScreen() {
                 resizeMode="cover"
               />
             ) : (
-              <Ionicons name="person" size={24} color={colors.accentTeal} />
+              <FontAwesome5 name="user" solid={false} size={22} color={colors.accentTeal} />
             )}
           </PressableScale>
         </Animated.View>
